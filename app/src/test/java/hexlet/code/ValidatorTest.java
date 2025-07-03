@@ -72,7 +72,7 @@ public class ValidatorTest {
 
     @Test
     public void testMapShape() {
-        Map<String, BaseSchema> data = new HashMap<>();
+        HashMap<String, BaseSchema> data = new HashMap<>();
         data.put("firstName", new Validator().string().required());
         data.put("lastName", new Validator().string().required().minLength(2));
         MAP_SCHEMA.shape(data);
