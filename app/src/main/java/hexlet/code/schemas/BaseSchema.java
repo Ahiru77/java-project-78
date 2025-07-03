@@ -4,13 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class BaseSchema<T> {
+public class BaseSchema {
     private Map<String, Predicate<Object>> map = new HashMap<>();
     public boolean requiredOn = false;
 
-    public BaseSchema() {
-        super();
-    }
 
     public void addRule(String rule, Predicate<Object> state) {
         map.put(rule, state);
