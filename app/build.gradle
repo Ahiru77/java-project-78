@@ -1,7 +1,17 @@
 plugins {
+<<<<<<< HEAD
     id 'application'
     id 'checkstyle'
     id 'jacoco'
+=======
+        id 'application'
+        id 'checkstyle'
+        id 'jacoco'
+}
+
+application {
+    mainClass = 'hexlet.code.App'
+>>>>>>> 4643404 (Delete duplicated gitignore)
 }
 
 group = 'hexlet.code'
@@ -20,4 +30,8 @@ test {
     useJUnitPlatform()
 }
 
+<<<<<<< HEAD
 tasks.jacocoTestReport { reports { xml.required.set(true) } }
+=======
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
+>>>>>>> 4643404 (Delete duplicated gitignore)

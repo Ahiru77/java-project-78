@@ -1,0 +1,20 @@
+package hexlet.code.schemas;
+
+public class StringSchema extends BaseSchema {
+
+    public StringSchema required() {
+        addCheck("required", value -> value instanceof String && !value.equals(""));
+        isRequired = true;
+        return this;
+    }
+
+    public StringSchema minLength(int num) {
+        addCheck("minLength", value -> String.valueOf(value).length() >= num);
+        return this;
+    }
+
+    public StringSchema contains(String str) {
+        addCheck("contains", value -> String.valueOf(value).contains(str));
+        return this;
+    }
+}
