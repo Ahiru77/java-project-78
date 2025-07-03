@@ -15,7 +15,6 @@ public class ValidatorTest {
     private static final StringSchema STRING_SCHEMA = new Validator().string();
     private static final NumberSchema NUMBER_SCHEMA = new Validator().number();
     private static final MapSchema MAP_SCHEMA = new Validator().map();
-//  private final Map<String, BaseSchema<String>> data = new HashMap<>();
 
     @Test
     public void testString() {
