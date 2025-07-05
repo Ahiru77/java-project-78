@@ -1,12 +1,12 @@
 package hexlet.code.schemas;
 
-public class StringSchema extends BaseSchema {
+public final class StringSchema extends BaseSchema<String> {
     public StringSchema contains(String str) {
-        addRule("contains", value -> value != null && String.valueOf(value).contains(str));
+        addRule("contains", value -> value != null && value.contains(str));
         return this;
     }
     public StringSchema minLength(int len) {
-        addRule("minLength", value -> value != null && String.valueOf(value).length() >= len);
+        addRule("minLength", value -> value != null && value.length() >= len);
         return this;
     }
     public StringSchema required() {

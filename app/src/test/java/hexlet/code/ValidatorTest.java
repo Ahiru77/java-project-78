@@ -14,7 +14,7 @@ import java.util.Map;
 public class ValidatorTest {
     private static final StringSchema STRING_SCHEMA = new Validator().string();
     private static final NumberSchema NUMBER_SCHEMA = new Validator().number();
-    private static final MapSchema MAP_SCHEMA = new Validator().map();
+    private static final MapSchema<String, String> MAP_SCHEMA = new Validator().map();
 
     @Test
     public void testString() {
@@ -72,7 +72,7 @@ public class ValidatorTest {
 
     @Test
     public void testMapShape() {
-        HashMap<String, BaseSchema> data = new HashMap<>();
+        HashMap<String, BaseSchema<String>> data = new HashMap<>();
         data.put("firstName", new Validator().string().required());
         data.put("lastName", new Validator().string().required().minLength(2));
         MAP_SCHEMA.shape(data);

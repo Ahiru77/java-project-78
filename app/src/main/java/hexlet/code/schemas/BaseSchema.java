@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Predicate;
 
-public class BaseSchema {
-    private Map<String, Predicate<Object>> map = new HashMap<>();
-    public boolean requiredOn = false;
+public abstract class BaseSchema<T> {
+    protected  Map<String, Predicate<T>> map = new HashMap<>();
+    protected  boolean requiredOn = false;
 
 
-    public void addRule(String rule, Predicate<Object> state) {
+    public final void addRule(String rule, Predicate<T> state) {
         map.put(rule, state);
     }
 
-    public boolean isValid(Object obj) {
+    public final boolean isValid(T obj) {
         if (!requiredOn && obj == null) {
             return true;
         }

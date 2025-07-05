@@ -2,23 +2,24 @@ package hexlet.code.schemas;
 import java.util.Map;
 import java.util.Objects;
 
-public class MapSchema extends BaseSchema {
-    public MapSchema sizeof(int size) {
-        addRule("range", value -> value instanceof Map<?, ?> && ((Map<?, ?>) value).size() == size);
+public final class MapSchema<A, B> extends BaseSchema<Map<A, B>> {
+    public MapSchema<A, B> sizeof(int size) {
+        addRule("range", value -> value.size() == size);
         return this;
     }
 
-    public MapSchema shape(Map<String, BaseSchema> schemas) {
-        for (var entry : schemas.entrySet()) {
-            var key = entry.getKey();
-            var schema = entry.getValue();
-            addRule("shape", value -> ((Map<?, ?>) value).containsKey(key)
-                    && schema.isValid(((Map<?, ?>) value).get(key)));
-        }
+    public MapSchema<A, B> shape(Map<A, BaseSchema<B>> schemas) {
+        addRule("shape", map -> schemas.entrySet().stream().allMatch(e -> {
+            A key = e.getKey();
+            BaseSchema<B> schema = e.getValue();
+            return (map.containsKey(key)
+                    && schema.isValid(map.get(key)));
+        })
+        );
         return this;
     }
 
-    public MapSchema required() {
+    public MapSchema<A, B> required() {
         addRule("required", Objects::nonNull);
         requiredOn = true;
         return this;
