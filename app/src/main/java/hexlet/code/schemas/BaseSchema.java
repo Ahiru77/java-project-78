@@ -20,7 +20,7 @@ public abstract class BaseSchema<T> {
         var i = 0;
         for (var entry : map.entrySet()) {
             i = i + 1;
-            System.out.println("Num of rule " + entry.getKey() + " is " + i);
+            System.out.println("Num of rule " + entry.getKey() + " is " + i + ", named as " + obj);
             if (!entry.getValue().test(obj)) {
                 return false;
             }
