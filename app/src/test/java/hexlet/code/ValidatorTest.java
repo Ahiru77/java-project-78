@@ -36,29 +36,25 @@ public class ValidatorTest {
 
     @Test
     public void testNumber() {
-        System.out.println("True is " + NUMBER_SCHEMA.isValid(null));
-        System.out.println("True is " + NUMBER_SCHEMA.isValid(5));
 
+        NUMBER_SCHEMA.positive();
         assertTrue(NUMBER_SCHEMA.isValid(null));
         assertTrue(NUMBER_SCHEMA.isValid(5));
 
         NUMBER_SCHEMA.required();
-        System.out.println("False is " + NUMBER_SCHEMA.isValid(null));
-        System.out.println("True is " + NUMBER_SCHEMA.isValid(10));
         assertFalse(NUMBER_SCHEMA.isValid(null));
         assertTrue(NUMBER_SCHEMA.isValid(10));
 
         NUMBER_SCHEMA.range(10, 20);
-        System.out.println("True is " + NUMBER_SCHEMA.isValid(15));
-        System.out.println("False is " + NUMBER_SCHEMA.isValid(5));
         assertTrue(NUMBER_SCHEMA.isValid(15));
         assertFalse(NUMBER_SCHEMA.isValid(5));
 
         NUMBER_SCHEMA.positive();
-        System.out.println("True is " + NUMBER_SCHEMA.isValid(20));
-        System.out.println("False is " + NUMBER_SCHEMA.isValid(-20));
         assertTrue(NUMBER_SCHEMA.isValid(20));
         assertFalse(NUMBER_SCHEMA.isValid(-20));
+
+
+
     }
 
     @Test
